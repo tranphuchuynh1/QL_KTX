@@ -29,83 +29,69 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dongtienphong));
-            btthoat = new Button();
-            button1 = new Button();
-            comboBox4 = new ComboBox();
-            comboBox3 = new ComboBox();
-            textBox8 = new TextBox();
-            label6 = new Label();
+            buttonThoat = new Button();
+            buttonThanhToán = new Button();
+            textBoxTiềnĐóng = new TextBox();
+            Tòa = new Label();
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePickerNgàyĐóng = new DateTimePicker();
+            comboBoxTòa = new ComboBox();
+            comboBoxSốPhòng = new ComboBox();
             SuspendLayout();
             // 
-            // btthoat
+            // buttonThoat
             // 
-            btthoat.BackColor = Color.FromArgb(128, 255, 128);
-            btthoat.BackgroundImage = Properties.Resources.icons8_logout_26;
-            btthoat.BackgroundImageLayout = ImageLayout.None;
-            btthoat.Cursor = Cursors.Hand;
-            btthoat.FlatStyle = FlatStyle.Flat;
-            btthoat.Location = new Point(292, 210);
-            btthoat.Margin = new Padding(3, 2, 3, 2);
-            btthoat.Name = "btthoat";
-            btthoat.Size = new Size(125, 38);
-            btthoat.TabIndex = 20;
-            btthoat.Text = "Thoát";
-            btthoat.UseVisualStyleBackColor = false;
-            btthoat.Click += btthoat_Click;
+            buttonThoat.BackColor = Color.FromArgb(128, 255, 128);
+            buttonThoat.BackgroundImage = Properties.Resources.icons8_logout_26;
+            buttonThoat.BackgroundImageLayout = ImageLayout.None;
+            buttonThoat.Cursor = Cursors.Hand;
+            buttonThoat.FlatStyle = FlatStyle.Flat;
+            buttonThoat.Location = new Point(334, 280);
+            buttonThoat.Name = "buttonThoat";
+            buttonThoat.Size = new Size(143, 51);
+            buttonThoat.TabIndex = 20;
+            buttonThoat.Text = "Thoát";
+            buttonThoat.UseVisualStyleBackColor = false;
+            buttonThoat.Click += buttonThoat_Click;
             // 
-            // button1
+            // buttonThanhToán
             // 
-            button1.BackColor = Color.FromArgb(128, 255, 128);
-            button1.BackgroundImage = Properties.Resources.icons8_money_26;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(67, 210);
-            button1.Name = "button1";
-            button1.Size = new Size(125, 38);
-            button1.TabIndex = 19;
-            button1.Text = "Thanh toán";
-            button1.UseVisualStyleBackColor = false;
+            buttonThanhToán.BackColor = Color.FromArgb(128, 255, 128);
+            buttonThanhToán.BackgroundImage = Properties.Resources.icons8_money_26;
+            buttonThanhToán.BackgroundImageLayout = ImageLayout.None;
+            buttonThanhToán.Cursor = Cursors.Hand;
+            buttonThanhToán.FlatStyle = FlatStyle.Flat;
+            buttonThanhToán.Location = new Point(77, 280);
+            buttonThanhToán.Margin = new Padding(3, 4, 3, 4);
+            buttonThanhToán.Name = "buttonThanhToán";
+            buttonThanhToán.Size = new Size(143, 51);
+            buttonThanhToán.TabIndex = 19;
+            buttonThanhToán.Text = "Thanh toán";
+            buttonThanhToán.UseVisualStyleBackColor = false;
+            buttonThanhToán.Click += buttonThanhToán_Click;
             // 
-            // comboBox4
+            // textBoxTiềnĐóng
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(266, 66);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(210, 23);
-            comboBox4.TabIndex = 17;
+            textBoxTiềnĐóng.Location = new Point(304, 143);
+            textBoxTiềnĐóng.Margin = new Padding(3, 4, 3, 4);
+            textBoxTiềnĐóng.Name = "textBoxTiềnĐóng";
+            textBoxTiềnĐóng.Size = new Size(239, 27);
+            textBoxTiềnĐóng.TabIndex = 16;
+            textBoxTiềnĐóng.TextChanged += textBoxTiềnĐóng_TextChanged;
             // 
-            // comboBox3
+            // Tòa
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "B1", "B3" });
-            comboBox3.Location = new Point(266, 28);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(210, 23);
-            comboBox3.TabIndex = 18;
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(266, 107);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(210, 23);
-            textBox8.TabIndex = 16;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Microsoft Sans Serif", 12F);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(45, 27);
-            label6.Name = "label6";
-            label6.Size = new Size(36, 20);
-            label6.TabIndex = 13;
-            label6.Text = "Tòa";
+            Tòa.AutoSize = true;
+            Tòa.BackColor = Color.Transparent;
+            Tòa.Font = new Font("Microsoft Sans Serif", 12F);
+            Tòa.ForeColor = Color.Black;
+            Tòa.Location = new Point(54, 36);
+            Tòa.Name = "Tòa";
+            Tòa.Size = new Size(47, 25);
+            Tòa.TabIndex = 13;
+            Tòa.Text = "Tòa";
             // 
             // label4
             // 
@@ -113,9 +99,9 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Microsoft Sans Serif", 12F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(45, 105);
+            label4.Location = new Point(51, 140);
             label4.Name = "label4";
-            label4.Size = new Size(79, 20);
+            label4.Size = new Size(100, 25);
             label4.TabIndex = 14;
             label4.Text = "Tiền đóng";
             // 
@@ -125,9 +111,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 12F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(47, 66);
+            label2.Location = new Point(54, 88);
             label2.Name = "label2";
-            label2.Size = new Size(78, 20);
+            label2.Size = new Size(97, 25);
             label2.TabIndex = 15;
             label2.Text = "Số phòng";
             // 
@@ -137,37 +123,62 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 12F);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(45, 143);
+            label1.Location = new Point(51, 191);
             label1.Name = "label1";
-            label1.Size = new Size(85, 20);
+            label1.Size = new Size(107, 25);
             label1.TabIndex = 14;
             label1.Text = "Ngày đóng";
             // 
-            // dateTimePicker1
+            // dateTimePickerNgàyĐóng
             // 
-            dateTimePicker1.Location = new Point(266, 143);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(210, 23);
-            dateTimePicker1.TabIndex = 21;
+            dateTimePickerNgàyĐóng.Location = new Point(304, 191);
+            dateTimePickerNgàyĐóng.Margin = new Padding(3, 4, 3, 4);
+            dateTimePickerNgàyĐóng.Name = "dateTimePickerNgàyĐóng";
+            dateTimePickerNgàyĐóng.Size = new Size(239, 27);
+            dateTimePickerNgàyĐóng.TabIndex = 21;
+            dateTimePickerNgàyĐóng.ValueChanged += dateTimePickerNgàyĐóng_ValueChanged;
+            // 
+            // comboBoxTòa
+            // 
+            comboBoxTòa.FormattingEnabled = true;
+            comboBoxTòa.Items.AddRange(new object[] { "B1", "B3" });
+            comboBoxTòa.Location = new Point(304, 37);
+            comboBoxTòa.Margin = new Padding(3, 4, 3, 4);
+            comboBoxTòa.Name = "comboBoxTòa";
+            comboBoxTòa.Size = new Size(239, 28);
+            comboBoxTòa.TabIndex = 23;
+            comboBoxTòa.SelectedIndexChanged += comboBoxTòa_SelectedIndexChanged;
+            // 
+            // comboBoxSốPhòng
+            // 
+            comboBoxSốPhòng.FormattingEnabled = true;
+            comboBoxSốPhòng.Items.AddRange(new object[] { "B1", "B3" });
+            comboBoxSốPhòng.Location = new Point(304, 89);
+            comboBoxSốPhòng.Margin = new Padding(3, 4, 3, 4);
+            comboBoxSốPhòng.Name = "comboBoxSốPhòng";
+            comboBoxSốPhòng.Size = new Size(239, 28);
+            comboBoxSốPhòng.TabIndex = 24;
+            comboBoxSốPhòng.SelectedIndexChanged += comboBoxSốPhòng_SelectedIndexChanged;
             // 
             // Dongtienphong
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 255, 255);
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(488, 282);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(btthoat);
-            Controls.Add(button1);
-            Controls.Add(comboBox4);
-            Controls.Add(comboBox3);
-            Controls.Add(textBox8);
-            Controls.Add(label6);
+            ClientSize = new Size(558, 358);
+            Controls.Add(comboBoxSốPhòng);
+            Controls.Add(comboBoxTòa);
+            Controls.Add(dateTimePickerNgàyĐóng);
+            Controls.Add(buttonThoat);
+            Controls.Add(buttonThanhToán);
+            Controls.Add(textBoxTiềnĐóng);
+            Controls.Add(Tòa);
             Controls.Add(label1);
             Controls.Add(label4);
             Controls.Add(label2);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Dongtienphong";
             Text = "Đóng tiền";
             ResumeLayout(false);
@@ -176,15 +187,15 @@
 
         #endregion
 
-        private Button btthoat;
-        private Button button1;
-        private ComboBox comboBox4;
-        private ComboBox comboBox3;
-        private TextBox textBox8;
-        private Label label6;
+        private Button buttonThoat;
+        private Button buttonThanhToán;
+        private TextBox textBoxTiềnĐóng;
+        private Label Tòa;
         private Label label4;
         private Label label2;
         private Label label1;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerNgàyĐóng;
+        private ComboBox comboBoxTòa;
+        private ComboBox comboBoxSốPhòng;
     }
 }

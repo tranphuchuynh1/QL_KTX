@@ -21,40 +21,35 @@ namespace QL_KTX
         {
             QL_SinhVien ql = new QL_SinhVien();
             this.Hide();
-            ql.FormClosed += (s, agrs) => this.Close();
-            ql.Show();
+            ql.ShowDialog();
         }
 
         private void qLPhòngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QL_Phong ql = new QL_Phong();
             this.Hide();
-            ql.FormClosed += (s, agrs) => this.Close();
-            ql.Show();
+            ql.ShowDialog();
         }
 
         private void tìnhTrạngPhòngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TinhTrangPhong tt = new TinhTrangPhong();
             this.Hide();
-            tt.FormClosed += (s, agrs) => this.Close();
-            tt.Show();
+            tt.ShowDialog();
         }
 
         private void đóngTiềnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dongtienphong dt = new Dongtienphong();
             this.Hide();
-            dt.FormClosed += (s, agrs) => this.Close();
-            dt.Show();
+            dt.ShowDialog();
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DangNhap dn = new DangNhap();
             this.Hide();
-            dn.FormClosed += (s, agrs) => this.Close();
-            dn.Show();
+            dn.ShowDialog();
 
         }
 
@@ -62,24 +57,26 @@ namespace QL_KTX
         {
             Hoadon hd = new Hoadon();
             this.Hide();
-            hd.FormClosed += (s, agrs) => this.Close();
-            hd.Show();
+            hd.ShowDialog();
         }
 
         private void phòngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TinhTrangPhong tt = new TinhTrangPhong();
             this.Hide();
-            tt.FormClosed += (s, agrs) => this.Close();
-            tt.Show();
+            tt.ShowDialog();
         }
 
         private void hợpĐồngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hopdong hd = new Hopdong();
+            HopDong hd = new HopDong();
             this.Hide();
-            hd.FormClosed += (s, agrs) => this.Close();
-            hd.Show();
+            hd.ShowDialog();
+        }
+
+        private void hệThốngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

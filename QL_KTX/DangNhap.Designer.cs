@@ -33,28 +33,28 @@
             labelDN = new Label();
             labelMK = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            buttonDN = new Button();
-            buttonDK = new Button();
-            btthoat = new Button();
+            textBoxTàiKhoản = new TextBox();
+            textBoxMậtKhẩu = new TextBox();
+            buttonĐăngNhập = new Button();
+            buttonChuyểnQuaFormĐăngKý = new Button();
+            buttonThoát = new Button();
             SuspendLayout();
             // 
             // labelDN
             // 
             labelDN.AutoSize = true;
-            labelDN.Location = new Point(48, 36);
+            labelDN.Location = new Point(55, 48);
             labelDN.Name = "labelDN";
-            labelDN.Size = new Size(47, 15);
+            labelDN.Size = new Size(59, 20);
             labelDN.TabIndex = 0;
             labelDN.Text = "Họ Tên:";
             // 
             // labelMK
             // 
             labelMK.AutoSize = true;
-            labelMK.Location = new Point(48, 86);
+            labelMK.Location = new Point(55, 115);
             labelMK.Name = "labelMK";
-            labelMK.Size = new Size(61, 15);
+            labelMK.Size = new Size(75, 20);
             labelMK.TabIndex = 1;
             labelMK.Text = "Mật Khẩu:";
             // 
@@ -64,78 +64,72 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // textBox1
+            // textBoxTàiKhoản
             // 
-            textBox1.Location = new Point(133, 37);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(246, 23);
-            textBox1.TabIndex = 3;
+            textBoxTàiKhoản.Location = new Point(152, 49);
+            textBoxTàiKhoản.Name = "textBoxTàiKhoản";
+            textBoxTàiKhoản.Size = new Size(281, 27);
+            textBoxTàiKhoản.TabIndex = 3;
             // 
-            // textBox2
+            // textBoxMậtKhẩu
             // 
-            textBox2.Location = new Point(133, 86);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(246, 23);
-            textBox2.TabIndex = 4;
+            textBoxMậtKhẩu.Location = new Point(152, 115);
+            textBoxMậtKhẩu.Name = "textBoxMậtKhẩu";
+            textBoxMậtKhẩu.Size = new Size(281, 27);
+            textBoxMậtKhẩu.TabIndex = 4;
             // 
-            // buttonDN
+            // buttonĐăngNhập
             // 
-            buttonDN.BackgroundImage = Properties.Resources.icons8_login_26;
-            buttonDN.BackgroundImageLayout = ImageLayout.None;
-            buttonDN.Location = new Point(183, 127);
-            buttonDN.Margin = new Padding(3, 2, 3, 2);
-            buttonDN.Name = "buttonDN";
-            buttonDN.Size = new Size(113, 35);
-            buttonDN.TabIndex = 6;
-            buttonDN.Text = "Đăng nhập";
-            buttonDN.UseVisualStyleBackColor = true;
-            buttonDN.Click += buttonDN_Click;
+            buttonĐăngNhập.BackgroundImage = Properties.Resources.icons8_login_26;
+            buttonĐăngNhập.BackgroundImageLayout = ImageLayout.None;
+            buttonĐăngNhập.Location = new Point(209, 169);
+            buttonĐăngNhập.Name = "buttonĐăngNhập";
+            buttonĐăngNhập.Size = new Size(129, 47);
+            buttonĐăngNhập.TabIndex = 6;
+            buttonĐăngNhập.Text = "Đăng nhập";
+            buttonĐăngNhập.UseVisualStyleBackColor = true;
+            buttonĐăngNhập.Click += buttonĐăngNhập_Click;
             // 
-            // buttonDK
+            // buttonChuyểnQuaFormĐăngKý
             // 
-            buttonDK.BackgroundImage = Properties.Resources.icons8_registration_26;
-            buttonDK.BackgroundImageLayout = ImageLayout.None;
-            buttonDK.Cursor = Cursors.Hand;
-            buttonDK.Location = new Point(101, 179);
-            buttonDK.Margin = new Padding(3, 2, 3, 2);
-            buttonDK.Name = "buttonDK";
-            buttonDK.Size = new Size(107, 35);
-            buttonDK.TabIndex = 7;
-            buttonDK.Text = "Đăng ký";
-            buttonDK.UseVisualStyleBackColor = true;
-            buttonDK.Click += buttonDK_Click;
+            buttonChuyểnQuaFormĐăngKý.BackgroundImage = Properties.Resources.icons8_registration_26;
+            buttonChuyểnQuaFormĐăngKý.BackgroundImageLayout = ImageLayout.None;
+            buttonChuyểnQuaFormĐăngKý.Cursor = Cursors.Hand;
+            buttonChuyểnQuaFormĐăngKý.Location = new Point(115, 239);
+            buttonChuyểnQuaFormĐăngKý.Name = "buttonChuyểnQuaFormĐăngKý";
+            buttonChuyểnQuaFormĐăngKý.Size = new Size(122, 47);
+            buttonChuyểnQuaFormĐăngKý.TabIndex = 7;
+            buttonChuyểnQuaFormĐăngKý.Text = "Đăng ký";
+            buttonChuyểnQuaFormĐăngKý.UseVisualStyleBackColor = true;
+            buttonChuyểnQuaFormĐăngKý.Click += buttonChuyểnQuaFormĐăngKý_Click;
             // 
-            // btthoat
+            // buttonThoát
             // 
-            btthoat.BackgroundImage = Properties.Resources.icons8_logout_26;
-            btthoat.BackgroundImageLayout = ImageLayout.None;
-            btthoat.Cursor = Cursors.Hand;
-            btthoat.Location = new Point(284, 179);
-            btthoat.Margin = new Padding(3, 2, 3, 2);
-            btthoat.Name = "btthoat";
-            btthoat.Size = new Size(95, 38);
-            btthoat.TabIndex = 8;
-            btthoat.Text = "Thoát";
-            btthoat.UseVisualStyleBackColor = true;
-            btthoat.Click += btthoat_Click;
+            buttonThoát.BackgroundImage = Properties.Resources.icons8_logout_26;
+            buttonThoát.BackgroundImageLayout = ImageLayout.None;
+            buttonThoát.Cursor = Cursors.Hand;
+            buttonThoát.Location = new Point(325, 239);
+            buttonThoát.Name = "buttonThoát";
+            buttonThoát.Size = new Size(109, 51);
+            buttonThoát.TabIndex = 8;
+            buttonThoát.Text = "Thoát";
+            buttonThoát.UseVisualStyleBackColor = true;
+            buttonThoát.Click += buttonThoát_Click;
             // 
             // DangNhap
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(460, 228);
-            Controls.Add(btthoat);
-            Controls.Add(buttonDK);
-            Controls.Add(buttonDN);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(526, 304);
+            Controls.Add(buttonThoát);
+            Controls.Add(buttonChuyểnQuaFormĐăngKý);
+            Controls.Add(buttonĐăngNhập);
+            Controls.Add(textBoxMậtKhẩu);
+            Controls.Add(textBoxTàiKhoản);
             Controls.Add(labelMK);
             Controls.Add(labelDN);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 2, 3, 2);
             Name = "DangNhap";
             Text = "DangNhap";
             ResumeLayout(false);
@@ -147,10 +141,10 @@
         private Label labelDN;
         private Label labelMK;
         private ContextMenuStrip contextMenuStrip1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Button buttonDN;
-        private Button buttonDK;
-        private Button btthoat;
+        private TextBox textBoxTàiKhoản;
+        private TextBox textBoxMậtKhẩu;
+        private Button buttonĐăngNhập;
+        private Button buttonChuyểnQuaFormĐăngKý;
+        private Button buttonThoát;
     }
 }

@@ -1,46 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace QL_KTX
 {
     public partial class DangNhap : Form
     {
+        private DataAccessLayer dal = new DataAccessLayer();
+
         public DangNhap()
         {
             InitializeComponent();
         }
 
-        private void buttonThoat_Click(object sender, EventArgs e)
+        private void buttonĐăngNhập_Click(object sender, EventArgs e)
+        {
+            string username = textBoxTàiKhoản.Text;
+            string password = textBoxMậtKhẩu.Text;
+
+            string query = "SELECT COUNT(*) FROM TaiKhoan WHERE TenDangNhap = @TenDangNhap AND MatKhau = @MatKhau";
+            SqlParameter[] parameters = {
+                new SqlParameter("@TenDangNhap", username),
+                new SqlParameter("@MatKhau", password)
+            };
+
+            int result = (int)dal.ExecuteScalar(query, parameters);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Đăng nhập thành công!");
+                this.Hide();
+                Giaodien mainForm = new Giaodien();
+                mainForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
+            }
+        }
+
+        private void buttonChuyểnQuaFormĐăngKý_Click(object sender, EventArgs e)
+        {
+            DangKy registerForm = new DangKy();
+            this.Hide();
+            registerForm.Show();
+        }
+
+        private void buttonThoát_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void buttonDN_Click(object sender, EventArgs e)
-        {
-
-            QL_SinhVien f = new QL_SinhVien();
-            f.Show();
-            this.Hide();
-
-        }
-
-        private void buttonDK_Click(object sender, EventArgs e)
-        {
-            DangKy f = new DangKy();
-            f.Show();
-            this.Hide();
-        }
-
-        private void btthoat_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

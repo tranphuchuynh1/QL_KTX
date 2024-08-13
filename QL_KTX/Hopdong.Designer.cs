@@ -1,6 +1,6 @@
 ﻿namespace QL_KTX
 {
-    partial class Hopdong
+    partial class HopDong
     {
         /// <summary>
         /// Required designer variable.
@@ -28,160 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hopdong));
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            textBox1 = new TextBox();
-            label7 = new Label();
-            comboBox3 = new ComboBox();
-            comboBox4 = new ComboBox();
-            label6 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            textBox2 = new TextBox();
-            dataGridView1 = new DataGridView();
-            button3 = new Button();
+            comboBoxMSSV = new ComboBox();
             btthoat = new Button();
-            button2 = new Button();
+            buttonSửa = new Button();
+            buttonXóa = new Button();
             button1 = new Button();
-            comboBox1 = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dataGridViewHợpĐồng = new DataGridView();
+            dateTimePickerNgàyKếtThúc = new DateTimePicker();
+            dateTimePickerNgàyBắtĐầu = new DateTimePicker();
+            textBoxGhiChú = new TextBox();
+            comboBoxSốPhòng = new ComboBox();
+            comboBoxTòa = new ComboBox();
+            textBox1 = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label7 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            buttonThêm = new Button();
+            textBoxMãHợpĐồng = new TextBox();
+            label8 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewHợpĐồng).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // comboBoxMSSV
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(46, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(82, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Mã Hợp Đồng";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(46, 131);
-            label2.Name = "label2";
-            label2.Size = new Size(37, 15);
-            label2.TabIndex = 0;
-            label2.Text = "MSSV";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(46, 100);
-            label3.Name = "label3";
-            label3.Size = new Size(58, 15);
-            label3.TabIndex = 0;
-            label3.Text = "Số phòng";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(46, 162);
-            label4.Name = "label4";
-            label4.Size = new Size(78, 15);
-            label4.TabIndex = 0;
-            label4.Text = "Ngày bắt đầu";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(46, 193);
-            label5.Name = "label5";
-            label5.Size = new Size(81, 15);
-            label5.TabIndex = 0;
-            label5.Text = "Ngày kết thúc";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(166, 36);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(242, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(46, 69);
-            label7.Name = "label7";
-            label7.Size = new Size(25, 15);
-            label7.TabIndex = 0;
-            label7.Text = "Tòa";
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "B1", "B3" });
-            comboBox3.Location = new Point(166, 67);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(242, 23);
-            comboBox3.TabIndex = 19;
-            // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(166, 98);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(242, 23);
-            comboBox4.TabIndex = 20;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(47, 224);
-            label6.Name = "label6";
-            label6.Size = new Size(48, 15);
-            label6.TabIndex = 0;
-            label6.Text = "Ghi chú";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(165, 160);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(243, 23);
-            dateTimePicker1.TabIndex = 22;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(165, 191);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(243, 23);
-            dateTimePicker2.TabIndex = 22;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(165, 222);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(243, 23);
-            textBox2.TabIndex = 21;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = Color.FromArgb(192, 255, 192);
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-2, 253);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(652, 202);
-            dataGridView1.TabIndex = 23;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(128, 255, 128);
-            button3.BackgroundImage = Properties.Resources.icons8_save_as_26;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.Cursor = Cursors.Hand;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.Black;
-            button3.Location = new Point(445, 207);
-            button3.Name = "button3";
-            button3.Size = new Size(89, 38);
-            button3.TabIndex = 24;
-            button3.Text = "Sữa";
-            button3.UseVisualStyleBackColor = false;
+            comboBoxMSSV.FormattingEnabled = true;
+            comboBoxMSSV.Location = new Point(456, 139);
+            comboBoxMSSV.Margin = new Padding(3, 4, 3, 4);
+            comboBoxMSSV.Name = "comboBoxMSSV";
+            comboBoxMSSV.Size = new Size(277, 28);
+            comboBoxMSSV.TabIndex = 47;
             // 
             // btthoat
             // 
@@ -191,27 +70,48 @@
             btthoat.Cursor = Cursors.Hand;
             btthoat.FlatStyle = FlatStyle.Popup;
             btthoat.ForeColor = Color.Black;
-            btthoat.Location = new Point(560, 119);
+            btthoat.Location = new Point(907, 127);
+            btthoat.Margin = new Padding(3, 4, 3, 4);
             btthoat.Name = "btthoat";
-            btthoat.Size = new Size(90, 38);
-            btthoat.TabIndex = 27;
+            btthoat.Size = new Size(103, 51);
+            btthoat.TabIndex = 46;
             btthoat.Text = "Thoát";
             btthoat.UseVisualStyleBackColor = false;
+            btthoat.Click += btthoat_Click;
             // 
-            // button2
+            // buttonSửa
             // 
-            button2.BackColor = Color.FromArgb(128, 255, 128);
-            button2.BackgroundImage = Properties.Resources.icons8_x_26;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(445, 119);
-            button2.Name = "button2";
-            button2.Size = new Size(89, 38);
-            button2.TabIndex = 25;
-            button2.Text = "Xóa";
-            button2.UseVisualStyleBackColor = false;
+            buttonSửa.BackColor = Color.FromArgb(128, 255, 128);
+            buttonSửa.BackgroundImage = Properties.Resources.icons8_save_as_26;
+            buttonSửa.BackgroundImageLayout = ImageLayout.None;
+            buttonSửa.Cursor = Cursors.Hand;
+            buttonSửa.FlatStyle = FlatStyle.Flat;
+            buttonSửa.ForeColor = Color.Black;
+            buttonSửa.Location = new Point(776, 225);
+            buttonSửa.Margin = new Padding(3, 4, 3, 4);
+            buttonSửa.Name = "buttonSửa";
+            buttonSửa.Size = new Size(102, 51);
+            buttonSửa.TabIndex = 43;
+            buttonSửa.Text = "Sữa";
+            buttonSửa.UseVisualStyleBackColor = false;
+            buttonSửa.Click += buttonSửa_Click;
+            // 
+            // buttonXóa
+            // 
+            buttonXóa.BackColor = Color.FromArgb(128, 255, 128);
+            buttonXóa.BackgroundImage = Properties.Resources.icons8_x_26;
+            buttonXóa.BackgroundImageLayout = ImageLayout.None;
+            buttonXóa.Cursor = Cursors.Hand;
+            buttonXóa.FlatStyle = FlatStyle.Flat;
+            buttonXóa.ForeColor = Color.Black;
+            buttonXóa.Location = new Point(776, 128);
+            buttonXóa.Margin = new Padding(3, 4, 3, 4);
+            buttonXóa.Name = "buttonXóa";
+            buttonXóa.Size = new Size(102, 51);
+            buttonXóa.TabIndex = 44;
+            buttonXóa.Text = "Xóa";
+            buttonXóa.UseVisualStyleBackColor = false;
+            buttonXóa.Click += buttonXóa_Click;
             // 
             // button1
             // 
@@ -221,38 +121,193 @@
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(445, 36);
+            button1.Location = new Point(539, -54);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(89, 37);
-            button1.TabIndex = 26;
+            button1.Size = new Size(102, 49);
+            button1.TabIndex = 45;
             button1.Text = "Thêm";
             button1.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // dataGridViewHợpĐồng
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(165, 128);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(243, 23);
-            comboBox1.TabIndex = 28;
+            dataGridViewHợpĐồng.BackgroundColor = Color.FromArgb(192, 255, 192);
+            dataGridViewHợpĐồng.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewHợpĐồng.Location = new Point(4, 305);
+            dataGridViewHợpĐồng.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewHợpĐồng.Name = "dataGridViewHợpĐồng";
+            dataGridViewHợpĐồng.RowHeadersWidth = 51;
+            dataGridViewHợpĐồng.Size = new Size(1219, 212);
+            dataGridViewHợpĐồng.TabIndex = 42;
+            dataGridViewHợpĐồng.CellClick += dataGridViewHợpĐồng_CellClick;
             // 
-            // Hopdong
+            // dateTimePickerNgàyKếtThúc
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            dateTimePickerNgàyKếtThúc.Location = new Point(456, 223);
+            dateTimePickerNgàyKếtThúc.Margin = new Padding(3, 4, 3, 4);
+            dateTimePickerNgàyKếtThúc.Name = "dateTimePickerNgàyKếtThúc";
+            dateTimePickerNgàyKếtThúc.Size = new Size(277, 27);
+            dateTimePickerNgàyKếtThúc.TabIndex = 41;
+            // 
+            // dateTimePickerNgàyBắtĐầu
+            // 
+            dateTimePickerNgàyBắtĐầu.Location = new Point(456, 181);
+            dateTimePickerNgàyBắtĐầu.Margin = new Padding(3, 4, 3, 4);
+            dateTimePickerNgàyBắtĐầu.Name = "dateTimePickerNgàyBắtĐầu";
+            dateTimePickerNgàyBắtĐầu.Size = new Size(277, 27);
+            dateTimePickerNgàyBắtĐầu.TabIndex = 40;
+            // 
+            // textBoxGhiChú
+            // 
+            textBoxGhiChú.Location = new Point(456, 264);
+            textBoxGhiChú.Margin = new Padding(3, 4, 3, 4);
+            textBoxGhiChú.Name = "textBoxGhiChú";
+            textBoxGhiChú.Size = new Size(277, 27);
+            textBoxGhiChú.TabIndex = 39;
+            // 
+            // comboBoxSốPhòng
+            // 
+            comboBoxSốPhòng.FormattingEnabled = true;
+            comboBoxSốPhòng.Location = new Point(457, 99);
+            comboBoxSốPhòng.Margin = new Padding(3, 4, 3, 4);
+            comboBoxSốPhòng.Name = "comboBoxSốPhòng";
+            comboBoxSốPhòng.Size = new Size(276, 28);
+            comboBoxSốPhòng.TabIndex = 38;
+            // 
+            // comboBoxTòa
+            // 
+            comboBoxTòa.FormattingEnabled = true;
+            comboBoxTòa.Items.AddRange(new object[] { "B1", "B3" });
+            comboBoxTòa.Location = new Point(457, 57);
+            comboBoxTòa.Margin = new Padding(3, 4, 3, 4);
+            comboBoxTòa.Name = "comboBoxTòa";
+            comboBoxTòa.Size = new Size(276, 28);
+            comboBoxTòa.TabIndex = 37;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(220, -54);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(276, 27);
+            textBox1.TabIndex = 36;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(321, 267);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 20);
+            label6.TabIndex = 34;
+            label6.Text = "Ghi chú";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(320, 225);
+            label5.Name = "label5";
+            label5.Size = new Size(100, 20);
+            label5.TabIndex = 33;
+            label5.Text = "Ngày kết thúc";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(320, 184);
+            label4.Name = "label4";
+            label4.Size = new Size(99, 20);
+            label4.TabIndex = 32;
+            label4.Text = "Ngày bắt đầu";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(320, 101);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 20);
+            label3.TabIndex = 31;
+            label3.Text = "Số phòng";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(320, 60);
+            label7.Name = "label7";
+            label7.Size = new Size(33, 20);
+            label7.TabIndex = 30;
+            label7.Text = "Tòa";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(320, 143);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 20);
+            label2.TabIndex = 35;
+            label2.Text = "MSSV";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(83, -51);
+            label1.Name = "label1";
+            label1.Size = new Size(104, 20);
+            label1.TabIndex = 29;
+            label1.Text = "Mã Hợp Đồng";
+            // 
+            // buttonThêm
+            // 
+            buttonThêm.BackColor = Color.FromArgb(128, 255, 128);
+            buttonThêm.BackgroundImage = Properties.Resources.icons8_add_administrator_26;
+            buttonThêm.BackgroundImageLayout = ImageLayout.None;
+            buttonThêm.Cursor = Cursors.Hand;
+            buttonThêm.FlatStyle = FlatStyle.Flat;
+            buttonThêm.ForeColor = Color.Black;
+            buttonThêm.Location = new Point(776, 36);
+            buttonThêm.Margin = new Padding(3, 4, 3, 4);
+            buttonThêm.Name = "buttonThêm";
+            buttonThêm.Size = new Size(102, 49);
+            buttonThêm.TabIndex = 48;
+            buttonThêm.Text = "Thêm";
+            buttonThêm.UseVisualStyleBackColor = false;
+            buttonThêm.Click += buttonThêm_Click;
+            // 
+            // textBoxMãHợpĐồng
+            // 
+            textBoxMãHợpĐồng.Location = new Point(458, 17);
+            textBoxMãHợpĐồng.Margin = new Padding(3, 4, 3, 4);
+            textBoxMãHợpĐồng.Name = "textBoxMãHợpĐồng";
+            textBoxMãHợpĐồng.Size = new Size(276, 27);
+            textBoxMãHợpĐồng.TabIndex = 50;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(321, 20);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 20);
+            label8.TabIndex = 49;
+            label8.Text = "Mã Hợp Đồng";
+            // 
+            // HopDong
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(128, 255, 128);
-            ClientSize = new Size(651, 453);
-            Controls.Add(comboBox1);
+            ClientSize = new Size(1235, 527);
+            Controls.Add(textBoxMãHợpĐồng);
+            Controls.Add(label8);
+            Controls.Add(buttonThêm);
+            Controls.Add(comboBoxMSSV);
             Controls.Add(btthoat);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(buttonSửa);
+            Controls.Add(buttonXóa);
             Controls.Add(button1);
-            Controls.Add(dataGridView1);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox2);
-            Controls.Add(comboBox4);
-            Controls.Add(comboBox3);
+            Controls.Add(dataGridViewHợpĐồng);
+            Controls.Add(dateTimePickerNgàyKếtThúc);
+            Controls.Add(dateTimePickerNgàyBắtĐầu);
+            Controls.Add(textBoxGhiChú);
+            Controls.Add(comboBoxSốPhòng);
+            Controls.Add(comboBoxTòa);
             Controls.Add(textBox1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -261,34 +316,37 @@
             Controls.Add(label7);
             Controls.Add(label2);
             Controls.Add(label1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Hopdong";
-            Text = "Hopdong";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Name = "HopDong";
+            Text = "HopDong";
+            Load += HopDong_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewHợpĐồng).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label7;
-        private ComboBox comboBox3;
-        private ComboBox comboBox4;
-        private Label label6;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private DataGridView dataGridView1;
-        private Button button3;
+        private ComboBox comboBoxMSSV;
         private Button btthoat;
-        private Button button2;
+        private Button buttonSửa;
+        private Button buttonXóa;
         private Button button1;
-        private ComboBox comboBox1;
+        private DataGridView dataGridViewHợpĐồng;
+        private DateTimePicker dateTimePickerNgàyKếtThúc;
+        private DateTimePicker dateTimePickerNgàyBắtĐầu;
+        private TextBox textBoxGhiChú;
+        private ComboBox comboBoxSốPhòng;
+        private ComboBox comboBoxTòa;
+        private TextBox textBox1;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label7;
+        private Label label2;
+        private Label label1;
+        private Button buttonThêm;
+        private TextBox textBoxMãHợpĐồng;
+        private Label label8;
     }
 }

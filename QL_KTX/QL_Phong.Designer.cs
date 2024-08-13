@@ -29,139 +29,163 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QL_Phong));
-            dataGridView1 = new DataGridView();
+            dataGridViewQuảnLýPhòng = new DataGridView();
             groupBox1 = new GroupBox();
-            btthoat = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            comboBox3 = new ComboBox();
-            button1 = new Button();
-            textBox6 = new TextBox();
-            textBox2 = new TextBox();
+            buttonThoát = new Button();
+            buttonSửa = new Button();
+            buttonXóa = new Button();
+            comboBoxSốPhòng = new ComboBox();
+            comboBoxTòa = new ComboBox();
+            buttonThêm = new Button();
+            textBoxSốNgười = new TextBox();
+            textBoxGiáTiền = new TextBox();
             label7 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewQuảnLýPhòng).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewQuảnLýPhòng
             // 
-            dataGridView1.BackgroundColor = Color.FromArgb(255, 255, 128);
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(2, 265);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(532, 150);
-            dataGridView1.TabIndex = 5;
+            dataGridViewQuảnLýPhòng.BackgroundColor = Color.FromArgb(255, 255, 128);
+            dataGridViewQuảnLýPhòng.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewQuảnLýPhòng.Location = new Point(2, 353);
+            dataGridViewQuảnLýPhòng.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewQuảnLýPhòng.Name = "dataGridViewQuảnLýPhòng";
+            dataGridViewQuảnLýPhòng.RowHeadersWidth = 51;
+            dataGridViewQuảnLýPhòng.Size = new Size(696, 200);
+            dataGridViewQuảnLýPhòng.TabIndex = 5;
+            dataGridViewQuảnLýPhòng.CellClick += dataGridViewQuảnLýPhòng_CellClick;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
-            groupBox1.Controls.Add(btthoat);
-            groupBox1.Controls.Add(button6);
-            groupBox1.Controls.Add(button7);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(comboBox3);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox6);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(buttonThoát);
+            groupBox1.Controls.Add(buttonSửa);
+            groupBox1.Controls.Add(buttonXóa);
+            groupBox1.Controls.Add(comboBoxSốPhòng);
+            groupBox1.Controls.Add(comboBoxTòa);
+            groupBox1.Controls.Add(buttonThêm);
+            groupBox1.Controls.Add(textBoxSốNgười);
+            groupBox1.Controls.Add(textBoxGiáTiền);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.ForeColor = Color.FromArgb(255, 255, 128);
-            groupBox1.Location = new Point(2, 12);
+            groupBox1.Location = new Point(2, 16);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(532, 257);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(696, 329);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Quản lý phòng";
             // 
-            // btthoat
+            // buttonThoát
             // 
-            btthoat.BackColor = Color.FromArgb(255, 255, 128);
-            btthoat.BackgroundImage = Properties.Resources.icons8_logout_26;
-            btthoat.BackgroundImageLayout = ImageLayout.None;
-            btthoat.Cursor = Cursors.Hand;
-            btthoat.FlatStyle = FlatStyle.Popup;
-            btthoat.ForeColor = Color.Black;
-            btthoat.Location = new Point(428, 111);
-            btthoat.Name = "btthoat";
-            btthoat.Size = new Size(90, 38);
-            btthoat.TabIndex = 13;
-            btthoat.Text = "Thoát";
-            btthoat.UseVisualStyleBackColor = false;
-            btthoat.Click += btthoat_Click;
+            buttonThoát.BackColor = Color.FromArgb(255, 255, 128);
+            buttonThoát.BackgroundImage = Properties.Resources.icons8_logout_26;
+            buttonThoát.BackgroundImageLayout = ImageLayout.None;
+            buttonThoát.Cursor = Cursors.Hand;
+            buttonThoát.FlatStyle = FlatStyle.Popup;
+            buttonThoát.ForeColor = Color.Black;
+            buttonThoát.Location = new Point(489, 148);
+            buttonThoát.Margin = new Padding(3, 4, 3, 4);
+            buttonThoát.Name = "buttonThoát";
+            buttonThoát.Size = new Size(103, 51);
+            buttonThoát.TabIndex = 13;
+            buttonThoát.Text = "Thoát";
+            buttonThoát.UseVisualStyleBackColor = false;
+            buttonThoát.Click += buttonThoát_Click;
             // 
-            // button6
+            // buttonSửa
             // 
-            button6.BackColor = Color.FromArgb(255, 255, 128);
-            button6.BackgroundImage = Properties.Resources.icons8_save_as_26;
-            button6.BackgroundImageLayout = ImageLayout.None;
-            button6.Cursor = Cursors.Hand;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.ForeColor = Color.Black;
-            button6.Location = new Point(333, 176);
-            button6.Name = "button6";
-            button6.Size = new Size(89, 38);
-            button6.TabIndex = 14;
-            button6.Text = "Sữa";
-            button6.UseVisualStyleBackColor = false;
+            buttonSửa.BackColor = Color.FromArgb(255, 255, 128);
+            buttonSửa.BackgroundImage = Properties.Resources.icons8_save_as_26;
+            buttonSửa.BackgroundImageLayout = ImageLayout.None;
+            buttonSửa.Cursor = Cursors.Hand;
+            buttonSửa.FlatStyle = FlatStyle.Flat;
+            buttonSửa.ForeColor = Color.Black;
+            buttonSửa.Location = new Point(381, 235);
+            buttonSửa.Margin = new Padding(3, 4, 3, 4);
+            buttonSửa.Name = "buttonSửa";
+            buttonSửa.Size = new Size(102, 51);
+            buttonSửa.TabIndex = 14;
+            buttonSửa.Text = "Sữa";
+            buttonSửa.UseVisualStyleBackColor = false;
+            buttonSửa.Click += buttonSửa_Click;
             // 
-            // button7
+            // buttonXóa
             // 
-            button7.BackColor = Color.FromArgb(255, 255, 128);
-            button7.BackgroundImage = Properties.Resources.icons8_x_26;
-            button7.BackgroundImageLayout = ImageLayout.None;
-            button7.Cursor = Cursors.Hand;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.ForeColor = Color.Black;
-            button7.Location = new Point(333, 111);
-            button7.Name = "button7";
-            button7.Size = new Size(89, 38);
-            button7.TabIndex = 15;
-            button7.Text = "Xóa";
-            button7.UseVisualStyleBackColor = false;
+            buttonXóa.BackColor = Color.FromArgb(255, 255, 128);
+            buttonXóa.BackgroundImage = Properties.Resources.icons8_x_26;
+            buttonXóa.BackgroundImageLayout = ImageLayout.None;
+            buttonXóa.Cursor = Cursors.Hand;
+            buttonXóa.FlatStyle = FlatStyle.Flat;
+            buttonXóa.ForeColor = Color.Black;
+            buttonXóa.Location = new Point(381, 148);
+            buttonXóa.Margin = new Padding(3, 4, 3, 4);
+            buttonXóa.Name = "buttonXóa";
+            buttonXóa.Size = new Size(102, 51);
+            buttonXóa.TabIndex = 15;
+            buttonXóa.Text = "Xóa";
+            buttonXóa.UseVisualStyleBackColor = false;
+            buttonXóa.Click += buttonXóa_Click;
             // 
-            // comboBox3
+            // comboBoxSốPhòng
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "B1", "B3" });
-            comboBox3.Location = new Point(130, 44);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(176, 23);
-            comboBox3.TabIndex = 12;
+            comboBoxSốPhòng.FormattingEnabled = true;
+            comboBoxSốPhòng.Location = new Point(149, 119);
+            comboBoxSốPhòng.Margin = new Padding(3, 4, 3, 4);
+            comboBoxSốPhòng.Name = "comboBoxSốPhòng";
+            comboBoxSốPhòng.Size = new Size(201, 28);
+            comboBoxSốPhòng.TabIndex = 12;
             // 
-            // button1
+            // comboBoxTòa
             // 
-            button1.BackColor = Color.FromArgb(255, 255, 128);
-            button1.BackgroundImage = Properties.Resources.icons8_add_new_26;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(333, 48);
-            button1.Name = "button1";
-            button1.Size = new Size(89, 36);
-            button1.TabIndex = 5;
-            button1.Text = "Thêm";
-            button1.UseVisualStyleBackColor = false;
+            comboBoxTòa.FormattingEnabled = true;
+            comboBoxTòa.Items.AddRange(new object[] { "B1", "B3" });
+            comboBoxTòa.Location = new Point(149, 59);
+            comboBoxTòa.Margin = new Padding(3, 4, 3, 4);
+            comboBoxTòa.Name = "comboBoxTòa";
+            comboBoxTòa.Size = new Size(201, 28);
+            comboBoxTòa.TabIndex = 12;
             // 
-            // textBox6
+            // buttonThêm
             // 
-            textBox6.Location = new Point(130, 179);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(176, 23);
-            textBox6.TabIndex = 2;
+            buttonThêm.BackColor = Color.FromArgb(255, 255, 128);
+            buttonThêm.BackgroundImage = Properties.Resources.icons8_add_new_26;
+            buttonThêm.BackgroundImageLayout = ImageLayout.None;
+            buttonThêm.Cursor = Cursors.Hand;
+            buttonThêm.FlatStyle = FlatStyle.Flat;
+            buttonThêm.ForeColor = Color.Black;
+            buttonThêm.Location = new Point(381, 64);
+            buttonThêm.Margin = new Padding(3, 4, 3, 4);
+            buttonThêm.Name = "buttonThêm";
+            buttonThêm.Size = new Size(102, 48);
+            buttonThêm.TabIndex = 5;
+            buttonThêm.Text = "Thêm";
+            buttonThêm.UseVisualStyleBackColor = false;
+            buttonThêm.Click += buttonThêm_Click;
             // 
-            // textBox2
+            // textBoxSốNgười
             // 
-            textBox2.Location = new Point(130, 134);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(176, 23);
-            textBox2.TabIndex = 2;
+            textBoxSốNgười.Location = new Point(149, 239);
+            textBoxSốNgười.Margin = new Padding(3, 4, 3, 4);
+            textBoxSốNgười.Name = "textBoxSốNgười";
+            textBoxSốNgười.Size = new Size(201, 27);
+            textBoxSốNgười.TabIndex = 2;
+            // 
+            // textBoxGiáTiền
+            // 
+            textBoxGiáTiền.Location = new Point(149, 179);
+            textBoxGiáTiền.Margin = new Padding(3, 4, 3, 4);
+            textBoxGiáTiền.Name = "textBoxGiáTiền";
+            textBoxGiáTiền.Size = new Size(201, 27);
+            textBoxGiáTiền.TabIndex = 2;
             // 
             // label7
             // 
@@ -169,9 +193,9 @@
             label7.BackColor = Color.FromArgb(255, 255, 128);
             label7.Font = new Font("Microsoft Sans Serif", 8.25F);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(10, 54);
+            label7.Location = new Point(11, 72);
             label7.Name = "label7";
-            label7.Size = new Size(26, 13);
+            label7.Size = new Size(33, 17);
             label7.TabIndex = 1;
             label7.Text = "Tòa";
             // 
@@ -181,9 +205,9 @@
             label4.BackColor = Color.FromArgb(255, 255, 128);
             label4.Font = new Font("Microsoft Sans Serif", 8.25F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(10, 180);
+            label4.Location = new Point(11, 240);
             label4.Name = "label4";
-            label4.Size = new Size(49, 13);
+            label4.Size = new Size(64, 17);
             label4.TabIndex = 1;
             label4.Text = "Số người";
             // 
@@ -193,9 +217,9 @@
             label3.BackColor = Color.FromArgb(255, 255, 128);
             label3.Font = new Font("Microsoft Sans Serif", 8.25F);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(10, 138);
+            label3.Location = new Point(11, 184);
             label3.Name = "label3";
-            label3.Size = new Size(43, 13);
+            label3.Size = new Size(57, 17);
             label3.TabIndex = 1;
             label3.Text = "Giá tiền";
             // 
@@ -205,33 +229,26 @@
             label2.BackColor = Color.FromArgb(255, 255, 128);
             label2.Font = new Font("Microsoft Sans Serif", 8.25F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(10, 96);
+            label2.Location = new Point(11, 128);
             label2.Name = "label2";
-            label2.Size = new Size(53, 13);
+            label2.Size = new Size(69, 17);
             label2.TabIndex = 1;
             label2.Text = "Số phòng";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(130, 89);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(176, 23);
-            comboBox1.TabIndex = 12;
-            // 
             // QL_Phong
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.img_01671;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(531, 414);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(698, 552);
+            Controls.Add(dataGridViewQuảnLýPhòng);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "QL_Phong";
             Text = "QL_Phong";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewQuảnLýPhòng).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -239,19 +256,19 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewQuảnLýPhòng;
         private GroupBox groupBox1;
-        private Button button1;
-        private TextBox textBox2;
+        private Button buttonThêm;
+        private TextBox textBoxGiáTiền;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox6;
+        private TextBox textBoxSốNgười;
         private Label label7;
-        private ComboBox comboBox3;
-        private Button btthoat;
-        private Button button6;
-        private Button button7;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxTòa;
+        private Button buttonThoát;
+        private Button buttonSửa;
+        private Button buttonXóa;
+        private ComboBox comboBoxSốPhòng;
     }
 }

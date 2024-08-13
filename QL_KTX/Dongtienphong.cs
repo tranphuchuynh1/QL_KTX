@@ -1,30 +1,113 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace QL_KTX
 {
     public partial class Dongtienphong : Form
     {
+        private DataAccessLayer dal = new DataAccessLayer();
+
         public Dongtienphong()
         {
             InitializeComponent();
+            comboBoxTòa.SelectedIndexChanged += new EventHandler(comboBoxTòa_SelectedIndexChanged);
         }
 
-       
 
-        private void btthoat_Click(object sender, EventArgs e)
+
+        private void buttonThoat_Click(object sender, EventArgs e)
         {
-            Giaodien gd = new Giaodien();
+            Giaodien ql = new Giaodien();
             this.Hide();
-            gd.FormClosed += (s, agrs) => this.Close();
-            gd.Show();
+            ql.ShowDialog();
+        }
+
+        private void comboBoxTòa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Lấy tòa nhà đã chọn
+            string selectedToa = comboBoxTòa.Text;
+            if (!string.IsNullOrEmpty(selectedToa))
+            {
+                // Tải các số phòng tương ứng cho tòa nhà đã chọn
+                LoadPhongForToa(selectedToa);
+            }
+        }
+        private void LoadPhongForToa(string toa)
+        {
+            string query = "SELECT PhongID, SoPhong FROM Phong WHERE Toa = @Toa";
+            SqlParameter[] parameters = {
+            new SqlParameter("@Toa", toa)
+        };
+
+            try
+            {
+                DataTable dt = dal.ExecuteQuery(query, parameters);
+                comboBoxSốPhòng.DataSource = dt;
+                comboBoxSốPhòng.DisplayMember = "SoPhong";
+                comboBoxSốPhòng.ValueMember = "PhongID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải số phòng: " + ex.Message);
+            }
+        }
+
+        private void comboBoxSốPhòng_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTiềnĐóng_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerNgàyĐóng_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonThanhToán_Click(object sender, EventArgs e)
+        {
+            // Lấy dữ liệu từ các điều khiển
+           // string mssv = textBoxMSSV.Text;
+            int phongID = (int)comboBoxSốPhòng.SelectedValue;
+            string tienDong = textBoxTiềnĐóng.Text;
+            DateTime ngayDong = dateTimePickerNgàyĐóng.Value;
+
+            // Kiểm tra tính hợp lệ của dữ liệu
+          /*  if (string.IsNullOrWhiteSpace(mssv) ||
+                phongID <= 0 ||
+                !decimal.TryParse(tienDong, out decimal soTien) ||
+                ngayDong == default(DateTime))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                return;
+            }*/
+
+            // Chuẩn bị truy vấn SQL
+            string query = "INSERT INTO ThanhToan ( PhongID, SoTien, NgayThanhToan) " +
+                           "VALUES ( @PhongID, @SoTien, @NgayThanhToan)";
+
+            SqlParameter[] parameters = {
+       //  new SqlParameter("@MSSV", mssv),
+        new SqlParameter("@PhongID", phongID),
+        new SqlParameter("@SoTien", tienDong),
+        new SqlParameter("@NgayThanhToan", ngayDong)
+    };
+
+            try
+            {
+                // Thực hiện truy vấn
+                dal.ExecuteNonQuery(query, parameters);
+                MessageBox.Show("Thanh toán thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
     }
 }
