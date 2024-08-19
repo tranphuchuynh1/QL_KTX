@@ -78,5 +78,65 @@ namespace QL_KTX
         {
 
         }
+
+
+        // nút quản lý phòng
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QL_Phong ql = new QL_Phong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+
+
+
+        // nút logout
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DangNhap ql = new DangNhap();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        // nút ql sinh viên
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QL_SinhVien ql = new QL_SinhVien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        // nút hợp đồng
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HopDong ql = new HopDong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        // nút đóng tiền phòng
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Dongtienphong ql = new Dongtienphong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        // nút hóa đơn
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hoadon ql = new Hoadon();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        // nút tình trạng phòng
+        private void button6_Click(object sender, EventArgs e)
+        {
+            TinhTrangPhong ql = new TinhTrangPhong();
+            this.Hide();
+            ql.ShowDialog();
+        }
     }
 }

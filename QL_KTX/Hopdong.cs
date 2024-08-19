@@ -1,12 +1,21 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace QL_KTX
 {
     public partial class HopDong : Form
     {
         private DataAccessLayer dal = new DataAccessLayer();
-
+        private byte[] imageBytes;
         public HopDong()
         {
             InitializeComponent();
@@ -14,135 +23,213 @@ namespace QL_KTX
 
         private void HopDong_Load(object sender, EventArgs e)
         {
-            LoadMSSVData();
-            LoadPhongData();
             LoadHopDongData();
         }
-
         private void LoadHopDongData()
         {
-            if (dataGridViewHợpĐồng == null)
-            {
-                MessageBox.Show("Lỗi: dataGridViewHợpĐồng chưa được khởi tạo.");
-                return;
-            }
-
-            string query = "SELECT HopDong.HopDongID, HopDong.MSSV, SinhVien.HoTen, HopDong.PhongID, Phong.SoPhong, HopDong.NgayBatDau, HopDong.NgayKetThuc, HopDong.GhiChu " +
-                           "FROM HopDong " +
-                           "INNER JOIN SinhVien ON HopDong.MSSV = SinhVien.MSSV " +
-                           "INNER JOIN Phong ON HopDong.PhongID = Phong.PhongID";
+            string query = @"
+             SELECT hd.HopDongID, hd.MSSV, hd.HinhAnh ,sv.HoTen, 
+               CASE 
+                   WHEN sv.GioiTinh = 1 THEN N'Nam' 
+                   ELSE N'Nữ' 
+               END AS GioiTinh, sv.DiaChi , sv.SoDienThoai , 
+               p.Toa, p.SoPhong, hd.NgayBatDau, hd.NgayKetThuc, hd.GhiChu
+             FROM HopDong hd
+             INNER JOIN SinhVien sv ON hd.MSSV = sv.MSSV
+             INNER JOIN Phong p ON hd.PhongID = p.PhongID";
             DataTable dt = dal.ExecuteQuery(query);
             dataGridViewHợpĐồng.DataSource = dt;
         }
-        private void LoadMSSVData()
-        {
-            string query = "SELECT MSSV, HoTen FROM SinhVien";
-            DataTable dt = dal.ExecuteQuery(query);
 
-            if (dt != null && dt.Rows.Count > 0)
+
+
+
+        private void comboBoxToa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedToa = comboBoxToa.Text;
+            if (!string.IsNullOrEmpty(selectedToa))
             {
-                comboBoxMSSV.DataSource = dt;
-                comboBoxMSSV.DisplayMember = "MSSV"; // Hiển thị MSSV trong comboBox
-                comboBoxMSSV.ValueMember = "MSSV";   // Lấy MSSV làm giá trị chính
+                LoadPhongForToa(selectedToa);
             }
-            else
+        }
+        private void LoadPhongForToa(string toa)
+        {
+            string query = "SELECT SoPhong FROM Phong WHERE Toa = @Toa";
+            SqlParameter[] parameters = {
+        new SqlParameter("@Toa", toa)
+    };
+
+            DataTable dt = dal.ExecuteQuery(query, parameters);
+            comboBoxSốPhòng.Items.Clear();
+            foreach (DataRow row in dt.Rows)
             {
-                MessageBox.Show("Không có sinh viên nào trong hệ thống.");
+                comboBoxSốPhòng.Items.Add(row["SoPhong"].ToString());
             }
         }
 
-        private void LoadPhongData()
+        private void comboBoxSốPhòng_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = "SELECT PhongID, SoPhong FROM Phong";
-            DataTable dt = dal.ExecuteQuery(query);
-
-            if (dt != null && dt.Rows.Count > 0)
+            string selectedPhong = comboBoxSốPhòng.Text;
+            if (!string.IsNullOrEmpty(selectedPhong))
             {
-                comboBoxSốPhòng.DataSource = dt;
-                comboBoxSốPhòng.DisplayMember = "SoPhong"; // Display room numbers
-                comboBoxSốPhòng.ValueMember = "PhongID";   // Use PhongID as the value
+                LoadMSSVForPhong(selectedPhong);
             }
-            else
+        }
+        private void LoadMSSVForPhong(string phong)
+        {
+            string query = "SELECT MSSV FROM SinhVien WHERE Phong = @Phong";
+            SqlParameter[] parameters = {
+        new SqlParameter("@Phong", phong)
+    };
+
+            DataTable dt = dal.ExecuteQuery(query, parameters);
+            comboBoxMSSV.Items.Clear();
+            foreach (DataRow row in dt.Rows)
             {
-                MessageBox.Show("Không có phòng nào trong hệ thống.");
+                comboBoxMSSV.Items.Add(row["MSSV"].ToString());
             }
         }
 
-
-
-        private void buttonXóa_Click(object sender, EventArgs e)
+        private void buttonThêm_Click(object sender, EventArgs e)
         {
-            if (dataGridViewHợpĐồng.SelectedRows.Count > 0)
+
+            string mssv = comboBoxMSSV.Text;
+            string toa = comboBoxToa.Text;
+            string phong = comboBoxSốPhòng.Text;
+            DateTime ngayBatDau = dateTimePickerNgàyBắtĐầu.Value;
+            DateTime ngayKetThuc = dateTimePickerNgàyKếtThúc.Value;
+            string ghiChu = textBoxGhiChú.Text;
+
+            byte[] imageBytes = this.imageBytes; // Lấy ảnh đã chọn từ biến toàn cục
+
+            // Kiểm tra imageBytes có phải là null không
+            if (imageBytes == null)
             {
-                int hopDongID = (int)dataGridViewHợpĐồng.SelectedRows[0].Cells["HopDongID"].Value;
+                MessageBox.Show("Vui lòng chọn hình ảnh trước khi thêm hợp đồng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                string query = "DELETE FROM HopDong WHERE HopDongID = @HopDongID";
-                SqlParameter[] parameters = {
-            new SqlParameter("@HopDongID", hopDongID)
-                };
+            // Kiểm tra hợp đồng đã tồn tại
+            string checkQuery = "SELECT COUNT(*) FROM HopDong WHERE MSSV = @MSSV AND PhongID = (SELECT PhongID FROM Phong WHERE Toa = @Toa AND SoPhong = @Phong)";
+            SqlParameter[] checkParams = {
+        new SqlParameter("@MSSV", mssv),
+        new SqlParameter("@Toa", toa),
+        new SqlParameter("@Phong", phong)
+    };
 
-                try
-                {
-                    dal.ExecuteNonQuery(query, parameters);
-                    MessageBox.Show("Xóa hợp đồng thành công!");
-                    LoadHopDongData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Xóa hợp đồng thất bại: " + ex.Message);
-                }
+            int count = Convert.ToInt32(dal.ExecuteScalar(checkQuery, checkParams));
+
+            if (count > 0)
+            {
+                MessageBox.Show("Bạn đã có hợp đồng này trong danh sách bên dưới rồi, vui lòng thêm hợp đồng mới nhé ^^", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn hợp đồng để xóa.");
-            }
-        }
-
-
-
-
-
-
-        private void buttonSửa_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewHợpĐồng.SelectedRows.Count > 0)
-            {
-                // Get the selected HopDongID
-                int hopDongID = (int)dataGridViewHợpĐồng.SelectedRows[0].Cells["HopDongID"].Value;
-
-                // Get the new values from the form fields
-                string mssv = comboBoxMSSV.SelectedValue.ToString();
-                int phongID = (int)comboBoxSốPhòng.SelectedValue;
-                string ngayBatDau = dateTimePickerNgàyBắtĐầu.Value.ToString("yyyy-MM-dd");
-                string ngayKetThuc = dateTimePickerNgàyKếtThúc.Value.ToString("yyyy-MM-dd");
-                string ghiChu = textBoxGhiChú.Text;
-
-                // Update the database
-                string query = "UPDATE HopDong SET MSSV = @MSSV, PhongID = @PhongID, NgayBatDau = @NgayBatDau, NgayKetThuc = @NgayKetThuc, GhiChu = @GhiChu " +
-                               "WHERE HopDongID = @HopDongID";
-                SqlParameter[] parameters = {
+                // Thêm hợp đồng mới
+                string insertQuery = "INSERT INTO HopDong (MSSV, PhongID, NgayBatDau, NgayKetThuc, GhiChu, HinhAnh) VALUES " +
+                                     "(@MSSV, (SELECT PhongID FROM Phong WHERE Toa = @Toa AND SoPhong = @Phong), @NgayBatDau, @NgayKetThuc, @GhiChu, @HinhAnh)";
+                SqlParameter[] insertParams = {
             new SqlParameter("@MSSV", mssv),
-            new SqlParameter("@PhongID", phongID),
+            new SqlParameter("@Toa", toa),
+            new SqlParameter("@Phong", phong),
             new SqlParameter("@NgayBatDau", ngayBatDau),
             new SqlParameter("@NgayKetThuc", ngayKetThuc),
             new SqlParameter("@GhiChu", ghiChu),
-            new SqlParameter("@HopDongID", hopDongID)
+            new SqlParameter("@HinhAnh", (object)imageBytes ?? DBNull.Value),
         };
 
-                try
-                {
-                    dal.ExecuteNonQuery(query, parameters);
-                    MessageBox.Show("Sửa hợp đồng thành công!");
-                    LoadHopDongData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Sửa hợp đồng thất bại: " + ex.Message);
-                }
+                dal.ExecuteNonQuery(insertQuery, insertParams);
+                MessageBox.Show("Thêm hợp đồng thành công!");
+                LoadHopDongData();
             }
-            else
+        }
+
+        private void buttonSửa_Click(object sender, EventArgs e)
+        {
+            string mssv = comboBoxMSSV.Text;
+            string toa = comboBoxToa.Text;
+            string phong = comboBoxSốPhòng.Text;
+            DateTime ngayBatDau = dateTimePickerNgàyBắtĐầu.Value;
+            DateTime ngayKetThuc = dateTimePickerNgàyKếtThúc.Value;
+            string ghiChu = textBoxGhiChú.Text;
+
+            byte[] imageBytes = this.imageBytes; // Lấy ảnh đã chọn từ biến toàn cục
+
+
+            string query = "UPDATE HopDong SET NgayBatDau = @NgayBatDau, NgayKetThuc = @NgayKetThuc, GhiChu = @GhiChu, HinhAnh = @HinhAnh " +
+                           "WHERE MSSV = @MSSV AND PhongID = (SELECT PhongID FROM Phong WHERE Toa = @Toa AND SoPhong = @Phong)";
+            SqlParameter[] parameters = {
+            new SqlParameter("@MSSV", mssv),
+            new SqlParameter("@Toa", toa),
+            new SqlParameter("@Phong", phong),
+            new SqlParameter("@NgayBatDau", ngayBatDau),
+            new SqlParameter("@NgayKetThuc", ngayKetThuc),
+            new SqlParameter("@GhiChu", ghiChu),
+            new SqlParameter("@HinhAnh", imageBytes ?? (object)DBNull.Value),
+             };
+
+            dal.ExecuteNonQuery(query, parameters);
+            MessageBox.Show("Sửa hợp đồng thành công!");
+            LoadHopDongData();
+        }
+
+        private void buttonXóa_Click(object sender, EventArgs e)
+        {
+            string mssv = comboBoxMSSV.Text;
+            string toa = comboBoxToa.Text;
+            string phong = comboBoxSốPhòng.Text;
+
+            string query = "DELETE FROM HopDong WHERE MSSV = @MSSV AND PhongID = (SELECT PhongID FROM Phong WHERE Toa = @Toa AND SoPhong = @Phong)";
+            SqlParameter[] parameters = {
+        new SqlParameter("@MSSV", mssv),
+        new SqlParameter("@Toa", toa),
+        new SqlParameter("@Phong", phong)
+          };
+
+            dal.ExecuteNonQuery(query, parameters);
+            MessageBox.Show("Xóa hợp đồng thành công!");
+            LoadHopDongData();
+        }
+
+        private void dataGridViewHợpĐồng_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewHợpĐồng_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
-                MessageBox.Show("Vui lòng chọn hợp đồng để sửa.");
+                DataGridViewRow row = dataGridViewHợpĐồng.Rows[e.RowIndex];
+
+                // Kiểm tra và xử lý dữ liệu trước khi gán vào các control
+                comboBoxToa.Text = row.Cells["Toa"].Value != DBNull.Value ? row.Cells["Toa"].Value.ToString() : string.Empty;
+                comboBoxSốPhòng.Text = row.Cells["SoPhong"].Value != DBNull.Value ? row.Cells["SoPhong"].Value.ToString() : string.Empty;
+                comboBoxMSSV.Text = row.Cells["MSSV"].Value != DBNull.Value ? row.Cells["MSSV"].Value.ToString() : string.Empty;
+                dateTimePickerNgàyBắtĐầu.Value = row.Cells["NgayBatDau"].Value != DBNull.Value ? Convert.ToDateTime(row.Cells["NgayBatDau"].Value) : DateTime.Now;
+                dateTimePickerNgàyKếtThúc.Value = row.Cells["NgayKetThuc"].Value != DBNull.Value ? Convert.ToDateTime(row.Cells["NgayKetThuc"].Value) : DateTime.Now;
+                textBoxGhiChú.Text = row.Cells["GhiChu"].Value != DBNull.Value ? row.Cells["GhiChu"].Value.ToString() : string.Empty;
+                // Load image if available
+                byte[] imageBytes = row.Cells["HinhAnh"].Value as byte[];
+                if (row.Cells["HinhAnh"].Value != DBNull.Value)
+                {
+                    imageBytes = (byte[])row.Cells["HinhAnh"].Value;
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pictureBoxAnhThe.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pictureBoxAnhThe.Image = null;
+                }
+
+
+                // Tải lại danh sách phòng dựa trên tòa nhà đã chọn
+                LoadPhongForToa(comboBoxToa.Text);
+
+                // Tải lại danh sách sinh viên dựa trên phòng đã chọn
+                LoadMSSVForPhong(comboBoxSốPhòng.Text);
             }
         }
 
@@ -153,95 +240,105 @@ namespace QL_KTX
             ql.ShowDialog();
         }
 
-        /*private void dataGridViewHợpĐồng_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void buttonChonTep_Click(object sender, EventArgs e)
         {
-            if (dataGridViewHợpĐồng.SelectedRows.Count > 0)
+            // Mở hộp thoại chọn tệp
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                DataGridViewRow selectedRow = dataGridViewHợpĐồng.SelectedRows[0];
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                openFileDialog.Title = "Chọn Ảnh";
 
-                // Kiểm tra nếu cột không có giá trị null
-                if (selectedRow.Cells["MSSV"].Value != null)
-                    comboBoxMSSV.SelectedValue = selectedRow.Cells["MSSV"].Value.ToString();
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Đọc ảnh từ tệp
+                    string filePath = openFileDialog.FileName;
+                    pictureBoxAnhThe.Image = Image.FromFile(filePath);
 
-                if (selectedRow.Cells["PhongID"].Value != null)
-                    comboBoxSốPhòng.SelectedValue = selectedRow.Cells["PhongID"].Value;
-
-                if (selectedRow.Cells["NgayBatDau"].Value != null)
-                    dateTimePickerNgàyBắtĐầu.Value = Convert.ToDateTime(selectedRow.Cells["NgayBatDau"].Value);
-
-                if (selectedRow.Cells["NgayKetThuc"].Value != null)
-                    dateTimePickerNgàyKếtThúc.Value = Convert.ToDateTime(selectedRow.Cells["NgayKetThuc"].Value);
-
-                if (selectedRow.Cells["GhiChu"].Value != null)
-                    textBoxGhiChú.Text = selectedRow.Cells["GhiChu"].Value.ToString();
-            }
-        }*/
-
-        private void buttonThêm_Click(object sender, EventArgs e)
-        {
-            if (comboBoxMSSV.SelectedItem == null)
-            {
-                MessageBox.Show("Vui lòng chọn MSSV.");
-                return;
-            }
-
-            if (comboBoxSốPhòng.SelectedItem == null)
-            {
-                MessageBox.Show("Vui lòng chọn Số Phòng.");
-                return;
-            }
-
-            string mssv = comboBoxMSSV.Text;
-            int phongID = Convert.ToInt32(comboBoxSốPhòng.SelectedValue); // Convert safely
-            string ngayBatDau = dateTimePickerNgàyBắtĐầu.Value.ToString("yyyy-MM-dd");
-            string ngayKetThuc = dateTimePickerNgàyKếtThúc.Value.ToString("yyyy-MM-dd");
-            string ghiChu = textBoxGhiChú.Text;
-
-            string query = "INSERT INTO HopDong (MSSV, PhongID, NgayBatDau, NgayKetThuc, GhiChu) " +
-                           "VALUES (@MSSV, @PhongID, @NgayBatDau, @NgayKetThuc, @GhiChu)";
-            SqlParameter[] parameters = {
-        new SqlParameter("@MSSV", mssv),
-        new SqlParameter("@PhongID", phongID),
-        new SqlParameter("@NgayBatDau", ngayBatDau),
-        new SqlParameter("@NgayKetThuc", ngayKetThuc),
-        new SqlParameter("@GhiChu", ghiChu)
-    };
-
-            try
-            {
-                dal.ExecuteNonQuery(query, parameters);
-                MessageBox.Show("Thêm hợp đồng thành công!");
-                LoadHopDongData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Thêm hợp đồng thất bại: " + ex.Message);
+                    // Chuyển đổi ảnh thành mảng byte để lưu vào cơ sở dữ liệu
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBoxAnhThe.Image.Save(ms, pictureBoxAnhThe.Image.RawFormat);
+                        byte[] imageBytes = ms.ToArray();
+                        // Cập nhật ảnh vào biến toàn cục hoặc lưu vào database sau này
+                        // Ví dụ lưu vào biến toàn cục (sẽ sử dụng để cập nhật trong cơ sở dữ liệu)
+                        this.imageBytes = imageBytes;
+                    }
+                }
             }
         }
 
-        private void dataGridViewHợpĐồng_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void pictureBoxAnhThe_Click(object sender, EventArgs e)
         {
-            // Kiểm tra nếu có hàng nào được chọn
-            if (e.RowIndex >= 0)
+            if (dataGridViewHợpĐồng.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = dataGridViewHợpĐồng.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewHợpĐồng.SelectedRows[0];
+                int hopDongID = Convert.ToInt32(row.Cells["HopDongID"].Value);
 
-                // Kiểm tra nếu các cột không có giá trị null và gán giá trị cho các điều khiển tương ứng
-                if (selectedRow.Cells["MSSV"].Value != null)
-                    comboBoxMSSV.SelectedValue = selectedRow.Cells["MSSV"].Value.ToString();
+                // Tải ảnh từ cơ sở dữ liệu
+                string query = "SELECT HinhAnh FROM HopDong WHERE HopDongID = @HopDongID";
+                SqlParameter[] parameters = {
+            new SqlParameter("@HopDongID", hopDongID)
+        };
 
-                if (selectedRow.Cells["PhongID"].Value != null)
-                    comboBoxSốPhòng.SelectedValue = selectedRow.Cells["PhongID"].Value;
+                byte[] imageBytes = (byte[])dal.ExecuteScalar(query, parameters);
 
-                if (selectedRow.Cells["NgayBatDau"].Value != null)
-                    dateTimePickerNgàyBắtĐầu.Value = Convert.ToDateTime(selectedRow.Cells["NgayBatDau"].Value);
-
-                if (selectedRow.Cells["NgayKetThuc"].Value != null)
-                    dateTimePickerNgàyKếtThúc.Value = Convert.ToDateTime(selectedRow.Cells["NgayKetThuc"].Value);
-
-                if (selectedRow.Cells["GhiChu"].Value != null)
-                    textBoxGhiChú.Text = selectedRow.Cells["GhiChu"].Value.ToString();
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pictureBoxAnhThe.Image = Image.FromStream(ms);
+                    }
+                }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QL_Phong ql = new QL_Phong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QL_SinhVien ql = new QL_SinhVien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HopDong ql = new HopDong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Dongtienphong ql = new Dongtienphong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hoadon ql = new Hoadon();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            TinhTrangPhong ql = new TinhTrangPhong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DangNhap ql = new DangNhap();
+            this.Hide();
+            ql.ShowDialog();
         }
     }
 }

@@ -12,7 +12,8 @@ namespace QL_KTX
         public QL_Phong()
         {
             InitializeComponent();
-            
+            this.Load += new EventHandler(QL_Phong_Load);
+
         }
 
         private void buttonThêm_Click(object sender, EventArgs e)
@@ -23,17 +24,38 @@ namespace QL_KTX
             // Chuyển đổi giaTien và soNguoi thành kiểu dữ liệu phù hợp
             if (!decimal.TryParse(textBoxGiáTiền.Text, out decimal giaTien) || !int.TryParse(textBoxSốNgười.Text, out int soNguoi))
             {
-                MessageBox.Show("Vui lòng nhập giá tiền và số người hợp lệ.");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin  ^^");
+                return;
+            }
+
+            // Kiểm tra trùng số phòng trong cùng một tòa
+            string checkQuery = "SELECT COUNT(*) FROM Phong WHERE Toa = @Toa AND SoPhong = @SoPhong";
+            SqlParameter[] checkParameters = {
+             new SqlParameter("@Toa", toa),
+                new SqlParameter("@SoPhong", soPhong)
+            };
+
+            int roomExists = (int)dal.ExecuteScalar(checkQuery, checkParameters);
+            if (roomExists > 0)
+            {
+                MessageBox.Show("Phòng này đã được thêm!");
+                return;
+            }
+
+            // Kiểm tra số người không được vượt quá 4
+            if (soNguoi > 4)
+            {
+                MessageBox.Show("Phòng này đã đầy!");
                 return;
             }
 
             string query = "INSERT INTO Phong (Toa, SoPhong, GiaTien, SoNguoi) VALUES (@Toa, @SoPhong, @GiaTien, @SoNguoi)";
             SqlParameter[] parameters = {
-                new SqlParameter("@Toa", toa),
-                new SqlParameter("@SoPhong", soPhong),
-                new SqlParameter("@GiaTien", giaTien),
-                new SqlParameter("@SoNguoi", soNguoi)
-            };
+        new SqlParameter("@Toa", toa),
+        new SqlParameter("@SoPhong", soPhong),
+        new SqlParameter("@GiaTien", giaTien),
+        new SqlParameter("@SoNguoi", soNguoi)
+             };
 
             try
             {
@@ -61,13 +83,20 @@ namespace QL_KTX
                 return;
             }
 
+            // Kiểm tra số người không được vượt quá 4
+            if (soNguoi > 4)
+            {
+                MessageBox.Show("Phòng này đã đầy!");
+                return;
+            }
+
             string query = "UPDATE Phong SET Toa = @Toa, GiaTien = @GiaTien, SoNguoi = @SoNguoi WHERE SoPhong = @SoPhong";
             SqlParameter[] parameters = {
-                new SqlParameter("@Toa", toa),
-                new SqlParameter("@GiaTien", giaTien),
+             new SqlParameter("@Toa", toa),
+             new SqlParameter("@GiaTien", giaTien),
                 new SqlParameter("@SoNguoi", soNguoi),
-                new SqlParameter("@SoPhong", soPhong)
-            };
+             new SqlParameter("@SoPhong", soPhong)
+             };
 
             try
             {
@@ -95,11 +124,7 @@ namespace QL_KTX
             dataGridViewQuảnLýPhòng.DataSource = dt;
         }
 
-        private void QL_Phong_Load(object sender, EventArgs e)
-        {
-            LoadPhongData();
-            dataGridViewQuảnLýPhòng.CellClick += new DataGridViewCellEventHandler(dataGridViewQuảnLýPhòng_CellClick);
-        }
+
 
         private void dataGridViewQuảnLýPhòng_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -151,6 +176,78 @@ namespace QL_KTX
         private void buttonThoát_Click(object sender, EventArgs e)
         {
             Giaodien ql = new Giaodien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QL_Phong_Load(object sender, EventArgs e)
+        {
+            LoadPhongData();
+            dataGridViewQuảnLýPhòng.CellClick += new DataGridViewCellEventHandler(dataGridViewQuảnLýPhòng_CellClick);
+        }
+
+        private void btthoat_Click(object sender, EventArgs e)
+        {
+            Giaodien ql = new Giaodien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HopDong ql = new HopDong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            QL_SinhVien ql = new QL_SinhVien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QL_Phong ql = new QL_Phong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Dongtienphong ql = new Dongtienphong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hoadon ql = new Hoadon();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            TinhTrangPhong ql = new TinhTrangPhong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            DangNhap ql = new DangNhap();
             this.Hide();
             ql.ShowDialog();
         }

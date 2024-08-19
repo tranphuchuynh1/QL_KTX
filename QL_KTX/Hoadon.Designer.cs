@@ -86,7 +86,7 @@
             // 
             // dataGridViewHóaĐơn
             // 
-            dataGridViewHóaĐơn.BackgroundColor = Color.FromArgb(192, 255, 255);
+            dataGridViewHóaĐơn.BackgroundColor = Color.FromArgb(224, 224, 224);
             dataGridViewHóaĐơn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewHóaĐơn.Location = new Point(0, 237);
             dataGridViewHóaĐơn.Margin = new Padding(3, 4, 3, 4);

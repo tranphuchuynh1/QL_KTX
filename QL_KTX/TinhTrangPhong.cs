@@ -98,5 +98,53 @@ namespace QL_KTX
             comboBoxTòa.ValueMember = "Toa";
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QL_Phong ql = new QL_Phong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QL_SinhVien ql = new QL_SinhVien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HopDong ql = new HopDong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Dongtienphong ql = new Dongtienphong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hoadon ql = new Hoadon();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            TinhTrangPhong ql = new TinhTrangPhong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DangNhap ql = new DangNhap();
+            this.Hide();
+            ql.ShowDialog();
+        }
     }
 }
