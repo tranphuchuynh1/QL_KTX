@@ -46,8 +46,12 @@
             button1 = new Button();
             panel4 = new Panel();
             pictureBox1 = new PictureBox();
+            button8 = new Button();
+            pictureBox2 = new PictureBox();
             panel2.SuspendLayout();
+            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -243,6 +247,8 @@
             // panel4
             // 
             panel4.BackColor = Color.SlateGray;
+            panel4.Controls.Add(pictureBox2);
+            panel4.Controls.Add(button8);
             panel4.Location = new Point(265, 50);
             panel4.Name = "panel4";
             panel4.Size = new Size(1117, 562);
@@ -257,6 +263,30 @@
             pictureBox1.Size = new Size(270, 153);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
+            // 
+            // button8
+            // 
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Century Schoolbook", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button8.ForeColor = SystemColors.Info;
+            button8.ImageAlign = ContentAlignment.MiddleLeft;
+            button8.Location = new Point(218, 71);
+            button8.Name = "button8";
+            button8.Size = new Size(725, 46);
+            button8.TabIndex = 1;
+            button8.Text = "WELCOME TO PHẦN MỀM QUẢN LÝ KTX";
+            button8.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(356, 144);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(443, 314);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 2;
+            pictureBox2.TabStop = false;
             // 
             // Giaodien
             // 
@@ -274,7 +304,9 @@
             Name = "Giaodien";
             Text = "Giao diện";
             panel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -297,5 +329,7 @@
         private Button button6;
         private Panel panel8;
         private Button button5;
+        private Button button8;
+        private PictureBox pictureBox2;
     }
 }

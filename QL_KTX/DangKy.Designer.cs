@@ -44,9 +44,9 @@
             labelHoTenDK.AutoSize = true;
             labelHoTenDK.Location = new Point(41, 37);
             labelHoTenDK.Name = "labelHoTenDK";
-            labelHoTenDK.Size = new Size(57, 20);
+            labelHoTenDK.Size = new Size(74, 20);
             labelHoTenDK.TabIndex = 0;
-            labelHoTenDK.Text = "Họ tên:";
+            labelHoTenDK.Text = "Tài khoản:";
             // 
             // labelMatKhauDK
             // 
@@ -111,6 +111,7 @@
             btthoat.TabIndex = 7;
             btthoat.Text = "Thoát";
             btthoat.UseVisualStyleBackColor = true;
+            btthoat.Click += btthoat_Click;
             // 
             // DangKy
             // 

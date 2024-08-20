@@ -49,5 +49,12 @@ namespace QL_KTX
         {
             Application.Exit();
         }
+
+        private void btthoat_Click(object sender, EventArgs e)
+        {
+            DangNhap ou = new DangNhap();
+            this.Hide();
+            ou.Show();
+        }
     }
 }

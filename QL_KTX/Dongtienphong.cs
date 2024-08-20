@@ -72,20 +72,20 @@ namespace QL_KTX
         private void buttonThanhToán_Click(object sender, EventArgs e)
         {
             // Lấy dữ liệu từ các điều khiển
-           // string mssv = textBoxMSSV.Text;
+            // string mssv = textBoxMSSV.Text;
             int phongID = (int)comboBoxSốPhòng.SelectedValue;
             string tienDong = textBoxTiềnĐóng.Text;
             DateTime ngayDong = dateTimePickerNgàyĐóng.Value;
 
             // Kiểm tra tính hợp lệ của dữ liệu
-          /*  if (string.IsNullOrWhiteSpace(mssv) ||
-                phongID <= 0 ||
-                !decimal.TryParse(tienDong, out decimal soTien) ||
-                ngayDong == default(DateTime))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
-                return;
-            }*/
+            /*  if (string.IsNullOrWhiteSpace(mssv) ||
+                  phongID <= 0 ||
+                  !decimal.TryParse(tienDong, out decimal soTien) ||
+                  ngayDong == default(DateTime))
+              {
+                  MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                  return;
+              }*/
 
             // Chuẩn bị truy vấn SQL
             string query = "INSERT INTO ThanhToan ( PhongID, SoTien, NgayThanhToan) " +
@@ -108,6 +108,48 @@ namespace QL_KTX
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QL_Phong ql = new QL_Phong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QL_SinhVien ql = new QL_SinhVien();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HopDong ql = new HopDong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Dongtienphong ql = new Dongtienphong();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hoadon ql = new Hoadon();
+            this.Hide();
+            ql.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            TinhTrangPhong ql = new TinhTrangPhong();
+            this.Hide();
+            ql.ShowDialog();
         }
     }
 }

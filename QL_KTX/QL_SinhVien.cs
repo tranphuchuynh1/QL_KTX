@@ -291,7 +291,7 @@ namespace QL_KTX
 
         private void button7_Click(object sender, EventArgs e)
         {
-            DangNhap ql = new DangNhap();
+            LuaChonCuaBanLaGi ql = new LuaChonCuaBanLaGi();
             this.Hide();
             ql.ShowDialog();
         }

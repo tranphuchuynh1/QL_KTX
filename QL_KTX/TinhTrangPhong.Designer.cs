@@ -185,9 +185,9 @@
             button7.ForeColor = SystemColors.Info;
             button7.Image = (Image)resources.GetObject("button7.Image");
             button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(3, 395);
+            button7.Location = new Point(0, 395);
             button7.Name = "button7";
-            button7.Size = new Size(267, 57);
+            button7.Size = new Size(270, 57);
             button7.TabIndex = 12;
             button7.Text = "Logout";
             button7.UseVisualStyleBackColor = false;

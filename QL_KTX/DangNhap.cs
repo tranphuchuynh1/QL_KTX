@@ -31,7 +31,7 @@ namespace QL_KTX
             {
                 MessageBox.Show("Đăng nhập thành công!");
                 this.Hide();
-                Giaodien mainForm = new Giaodien();
+                LuaChonCuaBanLaGi mainForm = new LuaChonCuaBanLaGi();
                 mainForm.Show();
             }
             else
@@ -50,6 +50,11 @@ namespace QL_KTX
         private void buttonThoát_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnThoát_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
