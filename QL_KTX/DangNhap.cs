@@ -26,7 +26,7 @@ namespace QL_KTX
             };
 
             int result = (int)dal.ExecuteScalar(query, parameters);
-
+           
             if (result > 0)
             {
                 MessageBox.Show("Đăng nhập thành công!");
