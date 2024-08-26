@@ -24,7 +24,7 @@ namespace QL_KTX
             // Kiểm tra nếu ô tài khoản trống
             if (string.IsNullOrWhiteSpace(username))
             {
-                MessageBox.Show("Tài khoản không được để trống!");
+                MessageBox.Show("Tài khoản không được để trống !");
                 return;
             }
             // Kiểm tra mật khẩu
