@@ -72,6 +72,7 @@
             textBoxTàiKhoản.Name = "textBoxTàiKhoản";
             textBoxTàiKhoản.Size = new Size(281, 27);
             textBoxTàiKhoản.TabIndex = 3;
+            textBoxTàiKhoản.TextChanged += textBoxTàiKhoản_TextChanged;
             // 
             // textBoxMậtKhẩu
             // 
