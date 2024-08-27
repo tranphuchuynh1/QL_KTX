@@ -35,6 +35,7 @@ CREATE TABLE HopDong (
     NgayBatDau DATE,
     NgayKetThuc DATE,
     GhiChu NVARCHAR(255)
+    HinhAnh VARBINARY(max)
 );
 
 CREATE TABLE ThanhToan (
